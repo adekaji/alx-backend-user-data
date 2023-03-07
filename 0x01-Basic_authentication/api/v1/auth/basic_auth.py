@@ -26,3 +26,6 @@ class BasicAuth(Auth):
             return None
         token = authorization_header.split(" ")[-1]
         return token
+
+        return
+
