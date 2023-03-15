@@ -58,7 +58,6 @@ class Auth:
             return usr
         raise ValueError(f"User {email} already exists")
 
-
     def valid_login(self, email: str, password: str) -> bool:
         """
         Validate a user's login credentials and return True if they are correct
@@ -77,7 +76,6 @@ class Auth:
         user_password = user.hashed_password
         passwd = password.encode("utf-8")
         return bcrypt.checkpw(passwd, user_password)
-
 
     def create_session(self, email: str) -> Union[None, str]:
         """
@@ -145,6 +143,7 @@ class Auth:
         reset_token = _generate_uuid()
         self._db.update_user(user.id, reset_token=reset_token)
         return reset_token
+
     def update_password(self, reset_token: str, password: str) -> None:
         """
         Updates a user's password
